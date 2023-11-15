@@ -1,15 +1,22 @@
 import type { IEndpoint, TEndpoint } from '~/interfaces/plugins/IEndpoint'
+import type { Guid } from '~/interfaces/plugins/base'
+
+const endpoints: Record<string, TEndpoint[]> = {
+  '/api/v1.0/store': [
+    { name: 'products-list', address: 'product/list' },
+    { name: 'products-detail', address: (id: Guid) => 'product/detail/' + id }
+  ]
+}
 
 class Endpoint implements IEndpoint {
 
   endpoints: TEndpoint[] = []
 
   constructor() {
-    this.register('/api/v1.0/store',
-      [
-        { name: 'products-list', address: 'product/list' },
-        { name: 'products-detail', address: id => 'product/detail/' + id }
-      ])
+  
+    for (const [key, value] of Object.entries(endpoints))
+      this.register(key, value)
+
   }
 
 
