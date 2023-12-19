@@ -1,5 +1,5 @@
 import type { TEndpoint } from '~/interfaces/plugins/IEndpoint'
-import type { Guid } from '~/interfaces/plugins/base'
+import type { Guid } from '~/interfaces/base'
 
 export const Endpoints: Record<string, TEndpoint[]> = {
   '/api/v1.0/store': [
