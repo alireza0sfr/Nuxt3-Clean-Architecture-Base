@@ -2,9 +2,9 @@ export class Response<T> {
   success: boolean
   code: number
   message: string
-  data: T | null
+  data: T
 
-  constructor(data: T | null = null, success: boolean = false, code: number = 400, message: string = '') {
+  constructor(data: T, success: boolean = false, code: number = 400, message: string = '') {
     this.success = success
     this.code = code
     this.message = message

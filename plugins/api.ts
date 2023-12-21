@@ -7,7 +7,7 @@ import { Response, Exception } from '~/domain/base'
 
 class Api implements IApi {
 
-  createInstance<T>(endpointName: string, payload?: T | Partial<T>, options?: UseFetchOptions<Response<T>>): Promise<Response<T | null>> {
+  createInstance<T>(endpointName: string, payload?: T | Partial<T>, options?: UseFetchOptions<Response<T>>): Promise<Response<T>> {
 
     const _endpoint = new Endpoint()
     const url = _endpoint.getUrl(endpointName)
@@ -20,8 +20,6 @@ class Api implements IApi {
 
           if (res && res.data && res.data.value)
             resolve(res.data.value)
-          else
-            resolve(new Response(null))
         })
         .catch((err: Exception) => reject(err))
     })
@@ -51,12 +49,12 @@ class Api implements IApi {
     }
   }
 
-  get<T>(endpointName: string, options?: UseFetchOptions<Response<T>>): Promise<Response<T | null>> {
+  get<T>(endpointName: string, options?: UseFetchOptions<Response<T>>): Promise<Response<T>> {
     options = Object.assign(options || {}, { method: 'GET' })
 
     return new Promise((resolve, reject) => {
       this.createInstance<T>(endpointName, undefined, options)
-        .then((res: Response<T | null>) => {
+        .then(res => {
           resolve(res)
         })
         .catch((err: Exception) => {
@@ -65,12 +63,12 @@ class Api implements IApi {
     })
   }
 
-  post<T>(endpointName: string, payload: T, options?: UseFetchOptions<Response<T>>): Promise<Response<T | null>> {
+  post<T>(endpointName: string, payload: T, options?: UseFetchOptions<Response<T>>): Promise<Response<T>> {
     options = Object.assign(options || {}, { method: 'POST' })
 
     return new Promise((resolve, reject) => {
       this.createInstance<T>(endpointName, payload, options)
-        .then((res: Response<T | null>) => {
+        .then(res => {
           resolve(res)
         })
         .catch((err: Exception) => {
@@ -79,12 +77,12 @@ class Api implements IApi {
     })
   }
 
-  put<T>(endpointName: string, payload: T, options?: UseFetchOptions<Response<T>>): Promise<Response<T | null>> {
+  put<T>(endpointName: string, payload: T, options?: UseFetchOptions<Response<T>>): Promise<Response<T>> {
     options = Object.assign(options || {}, { method: 'PUT' })
 
     return new Promise((resolve, reject) => {
       this.createInstance<T>(endpointName, payload, options)
-        .then((res: Response<T | null>) => {
+        .then(res => {
           resolve(res)
         })
         .catch((err: Exception) => {
@@ -93,12 +91,12 @@ class Api implements IApi {
     })
   }
 
-  patch<T>(endpointName: string, payload: Partial<T>, options?: UseFetchOptions<Response<T>>): Promise<Response<T | null>> {
+  patch<T>(endpointName: string, payload: Partial<T>, options?: UseFetchOptions<Response<T>>): Promise<Response<T>> {
     options = Object.assign(options || {}, { method: 'PATCH' })
 
     return new Promise((resolve, reject) => {
       this.createInstance<T>(endpointName, payload, options)
-        .then((res: Response<T | null>) => {
+        .then(res => {
           resolve(res)
         })
         .catch((err: Exception) => {
