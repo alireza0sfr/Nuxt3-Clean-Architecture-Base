@@ -26,6 +26,7 @@ class Api implements IApi {
   }
 
   createCustomOptions<T>(endpointName: string, payload?: T | Partial<T>): UseFetchOptions<Response<T>> {
+    const headers = useRequestHeaders(['cookie'])
     return {
       baseURL: '',
       key: endpointName,
@@ -33,9 +34,10 @@ class Api implements IApi {
       lazy: false,
       immediate: true,
       deep: true,
-      headers: {
-        Accept: 'application/json'
-      },
+      headers: defu({
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }, headers),
       watch: false,
       pick: undefined,
       timeout: 5000,
