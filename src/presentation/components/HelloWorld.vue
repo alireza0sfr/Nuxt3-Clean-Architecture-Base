@@ -1,5 +1,5 @@
 <template>
-  <div class="color-primary">
+  <div data-test="HelloWorld" class="color-primary">
     Hello World! (if This Text is red scss and variables works fine!)
   </div>
   <div>
