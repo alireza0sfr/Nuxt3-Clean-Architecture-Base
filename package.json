@@ -1,5 +1,5 @@
 {
-  "name": "Nuxt-Quasar-Base",
+  "name": "nuxt3-clean-architecture-base",
   "private": true,
   "type": "module",
   "scripts": {

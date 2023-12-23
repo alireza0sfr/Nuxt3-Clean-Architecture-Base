@@ -6,9 +6,9 @@ export default defineNuxtConfig({
   srcDir: 'src/',
   app: {
     head: {
-      title: 'Nuxt-Quasar-Base',
+      title: 'Nuxt3-Clean-Architecture-Base',
       meta: [
-        { name: 'description', content: 'Nuxt-Quasar-Base' }
+        { name: 'description', content: 'Nuxt3-Clean-Architecture-Base' }
       ],
       link: []
     }
