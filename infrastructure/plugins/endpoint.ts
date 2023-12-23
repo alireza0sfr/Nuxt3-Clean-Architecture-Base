@@ -1,5 +1,6 @@
-import type { IEndpoint, TEndpoint } from '~/interfaces/plugins/IEndpoint'
-import { Endpoints } from '../statics/endpoints'
+import type { IEndpoint, TEndpoint } from '~/application/interfaces/plugins/IEndpoint'
+import { Endpoints } from '~/application/statics/endpoints'
+
 export class Endpoint implements IEndpoint {
 
   endpoints: TEndpoint[] = []

@@ -1,5 +1,5 @@
 import type { UseFetchOptions } from '#app'
-import type { IApi } from '~/interfaces/plugins/IApi'
+import type { IApi } from '~/application/interfaces/plugins/IApi'
 
 import { defu } from 'defu'
 import { Endpoint } from './endpoint'

@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-  import { useTestStore } from '~/stores'
+  import { useTestStore } from '~/infrastructure/stores'
 
   const testStore = useTestStore()
   const { $logger } = useNuxtApp()

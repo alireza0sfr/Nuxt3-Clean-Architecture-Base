@@ -12,6 +12,28 @@ export default defineNuxtConfig({
       link: []
     }
   },
+  dir: {
+    middleware: 'infrastructure/middleware',
+    plugins: 'infrastructure/plugins',
+    layouts: 'presentation/layouts',
+    pages: 'presentation/pages',
+    public: 'presentation/public',
+    assets: 'presentation/assets'
+  },
+  imports: {
+    dirs: [
+      'infrastructure/composables/**/*.ts'
+    ]
+  },
+  components: [
+    {
+      path: 'presentation/components',
+    },
+  ],
+  devServer: {
+    https: false,
+    port: 3000,
+  },
   modules: [
     'nuxt-quasar-ui',
     '@pinia/nuxt',
@@ -23,17 +45,10 @@ export default defineNuxtConfig({
   alias: {
     '@': resolve(__dirname, './'),
     '~': resolve(__dirname, './'),
-    assets: '/<rootDir>/assets'
   },
   css: [
-    '/styles/main.scss'
+    '/presentation/assets/styles/main.scss'
   ],
-  proxy: {
-    "/api": {
-      target: process.env.BACKEND_ENDPOINT,
-      changeOrigin: true
-    }
-  },
   i18n: {
     locales: [
       {
@@ -44,14 +59,10 @@ export default defineNuxtConfig({
     ],
     defaultLocale: 'fa',
     lazy: true,
-    langDir: 'locales/',
-    // detectBrowserLanguage: {
-    //   useCookie: true,
-    //   cookieKey: 'i18n_redirected',
-    // },
+    langDir: 'application/locales/',
   },
   quasar: {
-    sassVariables: '/styles/_config.scss',
+    sassVariables: '/presentation/assets/styles/_config.scss',
     lang: 'fa-IR',
     config: {},
     extras: {

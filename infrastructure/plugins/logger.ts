@@ -1,5 +1,5 @@
-import { LoggerBaseMessages, LoggerLevels } from '~/enums/plugins/logger'
-import type ILogger from '~/interfaces/plugins/ILogger'
+import { LoggerBaseMessages, LoggerLevels } from '~/application/enums/plugins/logger'
+import type ILogger from '~/application/interfaces/plugins/ILogger'
 
 
 class Logger implements ILogger {

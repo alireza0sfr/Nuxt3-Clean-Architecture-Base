@@ -1,4 +1,4 @@
-import { LoggerBaseMessages, LoggerLevels } from '~/enums/plugins/logger'
+import { LoggerBaseMessages, LoggerLevels } from '~/application/enums/plugins/logger'
 
 export default interface ILogger {
 
