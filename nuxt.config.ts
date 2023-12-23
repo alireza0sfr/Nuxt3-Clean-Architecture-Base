@@ -3,6 +3,7 @@ import { resolve } from 'path'
 
 export default defineNuxtConfig({
   ssr: false,
+  srcDir: 'src/',
   app: {
     head: {
       title: 'Nuxt-Quasar-Base',
@@ -43,8 +44,8 @@ export default defineNuxtConfig({
     enabled: true
   },
   alias: {
-    '@': resolve(__dirname, './'),
-    '~': resolve(__dirname, './'),
+    '@': resolve(__dirname, 'src/'),
+    '~': resolve(__dirname, 'src/'),
   },
   css: [
     '/presentation/assets/styles/main.scss'
