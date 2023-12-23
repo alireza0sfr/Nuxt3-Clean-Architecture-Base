@@ -39,6 +39,7 @@ export default defineNuxtConfig({
     'nuxt-quasar-ui',
     '@pinia/nuxt',
     '@nuxtjs/i18n',
+    'nuxt-vitest'
   ],
   devtools: {
     enabled: true
