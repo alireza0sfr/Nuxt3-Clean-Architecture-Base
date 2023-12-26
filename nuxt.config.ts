@@ -13,6 +13,11 @@ export default defineNuxtConfig({
       link: []
     }
   },
+  runtimeConfig: {
+    public: {
+      apiBaseUrl: process.env.API_BASE_URL
+    },
+  },
   dir: {
     middleware: 'infrastructure/middleware',
     plugins: 'infrastructure/plugins',

@@ -26,9 +26,12 @@ class Api implements IApi {
   }
 
   createCustomOptions<T>(endpointName: string, payload?: T | Partial<T>): UseFetchOptions<Response<T>> {
-    const headers = useRequestHeaders(['cookie'])
+
+    const headers: HeadersInit = {}
+    const config = useRuntimeConfig()
+
     return {
-      baseURL: '',
+      baseURL: config.public.apiBaseUrl as string,
       key: endpointName,
       server: true,
       lazy: false,
