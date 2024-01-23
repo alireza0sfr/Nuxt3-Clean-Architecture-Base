@@ -1,0 +1,24 @@
+name: Nuxt Project Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  Deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Connect and Execute Commands
+        uses: appleboy/ssh-action@master
+        with:
+          username: ${{secrets.USERNAME}}
+          password: ${{secrets.PASSWORD}}
+          host: ${{secrets.HOST}}
+          port: ${{secrets.PORT}}
+          script: |
+            cd ${{secrets.PROJECT_PATH}}
+            docker-compose -f docker/docker-compose-prod.yml stop
+            git pull origin main
+            docker-compose -f docker/docker-compose-prod.yml restart
