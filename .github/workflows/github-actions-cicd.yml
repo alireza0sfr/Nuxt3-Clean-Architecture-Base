@@ -1,12 +1,26 @@
-name: Nuxt Project Deploy
+name: Nuxt Project Test and Deploy
 
 on:
   push:
     branches: [main]
 
 jobs:
+  Test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - name: Install packages
+        run: npm install
+      - name: Run Unit tests
+        run: npm run test:unit
   Deploy:
     name: Deploy
+    needs: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
